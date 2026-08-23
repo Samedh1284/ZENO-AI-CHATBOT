@@ -2,22 +2,12 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>ZENO AI</title>
 
     <style>
-
-        /* =====================================================
-           RESET
-        ===================================================== */
-
         * {
             margin: 0;
             padding: 0;
@@ -48,274 +38,191 @@
         }
 
         body {
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            font-family: Arial, Helvetica, sans-serif;
             background: var(--bg);
-
             color: var(--text);
-
             height: 100vh;
-
             overflow: hidden;
         }
 
+        button,
+        textarea {
+            font-family: inherit;
+        }
 
-        /* =====================================================
+        /* =========================
            APP
-        ===================================================== */
+        ========================= */
 
         .app {
-
             display: flex;
-
             width: 100%;
-
             height: 100vh;
         }
 
-
-        /* =====================================================
+        /* =========================
            SIDEBAR
-        ===================================================== */
+        ========================= */
 
         .sidebar {
-
             width: 270px;
-
             height: 100vh;
-
             background: var(--sidebar);
-
-            border-right:
-                1px solid var(--border);
+            border-right: 1px solid var(--border);
 
             display: flex;
-
             flex-direction: column;
 
             padding: 18px;
-
             flex-shrink: 0;
         }
 
-
         .brand {
-
             display: flex;
-
             align-items: center;
-
             gap: 11px;
-
             margin-bottom: 25px;
         }
 
-
         .logo {
-
             width: 40px;
-
             height: 40px;
-
             object-fit: contain;
-
             border-radius: 10px;
-
             background: #000;
         }
 
-
         .brand-name {
-
             font-size: 20px;
-
             font-weight: 700;
         }
 
-
         .brand-sub {
-
             font-size: 11px;
-
             color: var(--muted);
-
             margin-top: 2px;
         }
 
-
-        /* =====================================================
+        /* =========================
            NEW CHAT
-        ===================================================== */
+        ========================= */
 
         .new-chat {
-
             width: 100%;
-
             padding: 12px;
 
             border-radius: 10px;
-
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
 
             background: var(--panel);
-
             color: white;
 
             cursor: pointer;
-
             text-align: left;
 
             font-size: 14px;
-
             margin-bottom: 22px;
 
-            transition: .2s;
+            transition: 0.2s;
         }
 
-
         .new-chat:hover {
-
             background: var(--panel2);
-
             border-color: #374151;
         }
 
-
-        /* =====================================================
+        /* =========================
            HISTORY
-        ===================================================== */
+        ========================= */
 
         .history-heading {
-
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
 
             color: var(--muted);
-
             font-size: 11px;
 
             margin-bottom: 10px;
-
             padding: 0 4px;
         }
 
-
         .history-list {
-
             flex: 1;
-
             overflow-y: auto;
         }
 
-
         .history-item {
-
             padding: 10px;
-
             margin-bottom: 4px;
 
             border-radius: 8px;
 
             color: #b8c0c9;
-
             font-size: 13px;
 
             cursor: pointer;
 
             white-space: nowrap;
-
             overflow: hidden;
-
             text-overflow: ellipsis;
 
-            transition: .2s;
+            transition: 0.2s;
         }
 
-
         .history-item:hover {
-
             background: #171d24;
-
             color: white;
         }
 
-
         .history-empty {
-
             color: #56616e;
-
             font-size: 12px;
-
             padding: 10px 5px;
         }
 
-
         .clear-history {
-
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
 
             background: transparent;
-
             color: #858f9c;
 
             padding: 9px;
-
             border-radius: 8px;
 
             cursor: pointer;
-
             margin-top: 12px;
         }
 
-
         .clear-history:hover {
-
             background: #181e25;
-
             color: white;
         }
 
-
-        /* =====================================================
+        /* =========================
            MAIN
-        ===================================================== */
+        ========================= */
 
         .main {
-
             flex: 1;
-
             min-width: 0;
 
             height: 100vh;
 
             display: flex;
-
             flex-direction: column;
         }
 
-
-        /* =====================================================
+        /* =========================
            TOPBAR
-        ===================================================== */
+        ========================= */
 
         .topbar {
-
             height: 62px;
 
-            border-bottom:
-                1px solid var(--border);
+            border-bottom: 1px solid var(--border);
 
             display: flex;
-
             align-items: center;
 
             padding: 0 25px;
@@ -323,31 +230,22 @@
             flex-shrink: 0;
         }
 
-
         .top-title {
-
             font-size: 15px;
-
             font-weight: 600;
         }
 
-
         .online {
-
             margin-left: auto;
-
             font-size: 12px;
-
-            color: var(--success);
+            color: var(--muted);
         }
 
-
-        /* =====================================================
+        /* =========================
            CHAT AREA
-        ===================================================== */
+        ========================= */
 
         .chat-area {
-
             flex: 1;
 
             overflow-y: auto;
@@ -357,45 +255,32 @@
             scroll-behavior: smooth;
         }
 
-
         .chat-container {
-
             width: 100%;
-
             max-width: 900px;
-
             margin: auto;
         }
 
-
-        /* =====================================================
+        /* =========================
            WELCOME
-        ===================================================== */
+        ========================= */
 
         .welcome {
-
             min-height: 70vh;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             text-align: center;
         }
 
-
         .welcome-box {
-
             max-width: 650px;
         }
 
-
         .welcome-logo {
-
             width: 80px;
-
             height: 80px;
 
             object-fit: contain;
@@ -405,17 +290,12 @@
             border-radius: 18px;
         }
 
-
         .welcome h1 {
-
             font-size: 34px;
-
             margin-bottom: 12px;
         }
 
-
         .welcome p {
-
             color: var(--muted);
 
             line-height: 1.6;
@@ -423,15 +303,12 @@
             margin-bottom: 25px;
         }
 
-
-        /* =====================================================
+        /* =========================
            SUGGESTIONS
-        ===================================================== */
+        ========================= */
 
         .suggestions {
-
             display: flex;
-
             justify-content: center;
 
             flex-wrap: wrap;
@@ -439,13 +316,10 @@
             gap: 9px;
         }
 
-
         .suggestion {
-
             background: #11161c;
 
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
 
             padding: 11px 15px;
 
@@ -455,24 +329,19 @@
 
             cursor: pointer;
 
-            transition: .2s;
+            transition: 0.2s;
         }
 
-
         .suggestion:hover {
-
             background: #1b2128;
-
             color: white;
         }
 
-
-        /* =====================================================
+        /* =========================
            MESSAGE
-        ===================================================== */
+        ========================= */
 
         .message {
-
             display: flex;
 
             margin-bottom: 28px;
@@ -481,12 +350,10 @@
 
             max-width: 850px;
 
-            animation: messageIn .2s ease;
+            animation: messageIn 0.2s ease;
         }
 
-
         @keyframes messageIn {
-
             from {
                 opacity: 0;
                 transform: translateY(5px);
@@ -498,19 +365,13 @@
             }
         }
 
-
         .message.user {
-
             margin-left: auto;
-
             flex-direction: row-reverse;
         }
 
-
         .avatar {
-
             width: 36px;
-
             height: 36px;
 
             min-width: 36px;
@@ -524,15 +385,11 @@
             padding: 3px;
         }
 
-
         .message-content {
-
             max-width: 760px;
         }
 
-
         .message-name {
-
             color: #8994a2;
 
             font-size: 12px;
@@ -540,9 +397,7 @@
             margin-bottom: 6px;
         }
 
-
         .message-text {
-
             line-height: 1.6;
 
             color: #e9edf1;
@@ -552,9 +407,7 @@
             word-break: break-word;
         }
 
-
         .user .message-text {
-
             background: var(--user);
 
             padding: 12px 16px;
@@ -562,9 +415,7 @@
             border-radius: 13px;
         }
 
-
         .copy-button {
-
             background: transparent;
 
             border: none;
@@ -578,19 +429,15 @@
             margin-top: 7px;
         }
 
-
         .copy-button:hover {
-
             color: white;
         }
 
-
-        /* =====================================================
+        /* =========================
            TYPING
-        ===================================================== */
+        ========================= */
 
         .typing {
-
             display: flex;
 
             gap: 5px;
@@ -598,104 +445,77 @@
             padding: 8px 0;
         }
 
-
         .typing span {
-
             width: 7px;
-
             height: 7px;
 
             background: #798491;
 
             border-radius: 50%;
 
-            animation:
-                typing 1.2s infinite;
+            animation: typing 1.2s infinite;
         }
-
 
         .typing span:nth-child(2) {
-
-            animation-delay: .15s;
+            animation-delay: 0.15s;
         }
-
 
         .typing span:nth-child(3) {
-
-            animation-delay: .3s;
+            animation-delay: 0.3s;
         }
 
-
         @keyframes typing {
-
             0%,
             60%,
             100% {
-
                 transform: translateY(0);
-
-                opacity: .4;
+                opacity: 0.4;
             }
 
             30% {
-
                 transform: translateY(-5px);
-
                 opacity: 1;
             }
         }
 
-
-        /* =====================================================
+        /* =========================
            INPUT
-        ===================================================== */
+        ========================= */
 
         .input-section {
-
-            padding:
-                10px 25px 20px;
+            padding: 10px 25px 20px;
         }
 
-
         .input-wrapper {
-
             max-width: 900px;
-
             margin: auto;
         }
 
-
         .input-box {
-
             display: flex;
 
             align-items: flex-end;
 
             background: #11161c;
 
-            border:
-                1px solid var(--border);
+            border: 1px solid var(--border);
 
             border-radius: 15px;
 
             padding: 7px;
 
-            transition: .2s;
+            transition: 0.2s;
         }
 
-
         .input-box:focus-within {
-
             border-color: #3b4654;
 
             box-shadow:
                 0 0 0 2px
-                rgba(37, 99, 235, .08);
+                rgba(37, 99, 235, 0.08);
         }
 
-
         #messageInput {
-
             flex: 1;
 
             background: transparent;
@@ -719,17 +539,12 @@
             font-size: 14px;
         }
 
-
         #messageInput::placeholder {
-
             color: #687382;
         }
 
-
         #sendButton {
-
             width: 44px;
-
             height: 44px;
 
             border: none;
@@ -744,32 +559,26 @@
 
             font-size: 18px;
 
-            transition: .2s;
+            transition: 0.2s;
 
             flex-shrink: 0;
         }
 
-
         #sendButton:hover {
-
             background: var(--user-hover);
 
             transform: translateY(-1px);
         }
 
-
         #sendButton:disabled {
-
-            opacity: .5;
+            opacity: 0.5;
 
             cursor: not-allowed;
 
             transform: none;
         }
 
-
         .input-info {
-
             text-align: center;
 
             color: #58636f;
@@ -779,75 +588,53 @@
             margin-top: 8px;
         }
 
-
-        /* =====================================================
+        /* =========================
            MOBILE
-        ===================================================== */
+        ========================= */
 
-        @media(max-width: 750px) {
+        @media (max-width: 750px) {
 
             .sidebar {
-
                 display: none;
             }
 
-
             .chat-area {
-
-                padding:
-                    25px 14px;
+                padding: 25px 14px;
             }
-
 
             .input-section {
-
-                padding:
-                    10px 12px 15px;
+                padding: 10px 12px 15px;
             }
 
-
             .welcome h1 {
-
                 font-size: 27px;
             }
 
-
             .message {
-
                 max-width: 100%;
             }
 
-
             .message-content {
-
-                max-width:
-                    calc(100vw - 90px);
+                max-width: calc(100vw - 90px);
             }
 
-
             .topbar {
-
                 padding: 0 15px;
             }
         }
-
     </style>
-
 </head>
 
 
 <body>
 
-
 <div class="app">
 
-
-    <!-- =====================================================
+    <!-- =========================
          SIDEBAR
-    ====================================================== -->
+    ========================= -->
 
     <aside class="sidebar">
-
 
         <div class="brand">
 
@@ -911,16 +698,14 @@
             🗑 Clear History
         </button>
 
-
     </aside>
 
 
-    <!-- =====================================================
+    <!-- =========================
          MAIN
-    ====================================================== -->
+    ========================= -->
 
     <main class="main">
-
 
         <header class="topbar">
 
@@ -938,9 +723,9 @@
         </header>
 
 
-        <!-- =================================================
+        <!-- =========================
              CHAT
-        ================================================== -->
+        ========================= -->
 
         <section
             id="chatArea"
@@ -952,14 +737,12 @@
                 class="chat-container"
             >
 
-
                 <div
                     id="welcome"
                     class="welcome"
                 >
 
                     <div class="welcome-box">
-
 
                         <img
                             src="logo.png"
@@ -982,7 +765,6 @@
 
 
                         <div class="suggestions">
-
 
                             <button
                                 type="button"
@@ -1028,32 +810,26 @@
                                 ₿ Bitcoin Price
                             </button>
 
-
                         </div>
-
 
                     </div>
 
                 </div>
-
 
             </div>
 
         </section>
 
 
-        <!-- =================================================
+        <!-- =========================
              INPUT
-        ================================================== -->
+        ========================= -->
 
         <section class="input-section">
 
-
             <div class="input-wrapper">
 
-
                 <div class="input-box">
-
 
                     <textarea
                         id="messageInput"
@@ -1072,27 +848,20 @@
                         ➤
                     </button>
 
-
                 </div>
 
 
                 <div class="input-info">
-
                     Enter to send
                     • Shift + Enter for new line
                     • ZENO can make mistakes
-
                 </div>
-
 
             </div>
 
-
         </section>
 
-
     </main>
-
 
 </div>
 
@@ -1101,16 +870,21 @@
 
 /* ============================================================
    ZENO AI FRONTEND
-   MCP + RAG + COINGECKO + GEMINI + HISTORY
+
+   GEMINI
+   MCP
+   RAG
+   COINGECKO
+   CHAT HISTORY
 ============================================================ */
 
 
 /* ============================================================
-   CONFIG
+   LIVE RENDER BACKEND
 ============================================================ */
 
 const API_URL =
-    "http://127.0.0.1:8000";
+    "https://zeno-ai-chatbot.onrender.com";
 
 
 /* ============================================================
@@ -1188,18 +962,14 @@ async function checkBackend() {
             onlineStatus.style.color =
                 "#55d98b";
 
-        }
-
-        else {
+        } else {
 
             throw new Error(
                 "Backend unavailable"
             );
         }
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         console.warn(
             "[ZENO] Backend status:",
@@ -1239,15 +1009,18 @@ function newChat() {
                     alt="ZENO"
                 >
 
+
                 <h1>
                     How can I help you?
                 </h1>
+
 
                 <p>
                     Ask ZENO anything.
                     AI, coding, data,
                     calculations and more.
                 </p>
+
 
                 <div class="suggestions">
 
@@ -1259,6 +1032,7 @@ function newChat() {
                         What is AI?
                     </button>
 
+
                     <button
                         type="button"
                         class="suggestion"
@@ -1266,6 +1040,7 @@ function newChat() {
                     >
                         Calculate
                     </button>
+
 
                     <button
                         type="button"
@@ -1275,6 +1050,7 @@ function newChat() {
                         My Skills
                     </button>
 
+
                     <button
                         type="button"
                         class="suggestion"
@@ -1282,6 +1058,7 @@ function newChat() {
                     >
                         Current Time
                     </button>
+
 
                     <button
                         type="button"
@@ -1329,13 +1106,15 @@ function attachSuggestionEvents() {
 
             button.addEventListener(
                 "click",
-                function() {
+                function () {
 
                     const question =
                         this.dataset.question;
 
+
                     input.value =
                         question;
+
 
                     resizeInput();
 
@@ -1355,9 +1134,7 @@ function attachSuggestionEvents() {
 
 async function sendMessage() {
 
-
     if (sending) {
-
         return;
     }
 
@@ -1391,7 +1168,6 @@ async function sendMessage() {
 
 
     if (welcome) {
-
         welcome.remove();
     }
 
@@ -1402,11 +1178,8 @@ async function sendMessage() {
 
 
     messages.push({
-
         role: "user",
-
         text: text
-
     });
 
 
@@ -1421,7 +1194,6 @@ async function sendMessage() {
 
     try {
 
-
         console.log(
             "[ZENO] Sending:",
             text
@@ -1432,26 +1204,20 @@ async function sendMessage() {
             await fetch(
                 API_URL + "/chat",
                 {
-
                     method: "POST",
 
                     headers: {
-
                         "Content-Type":
                             "application/json",
 
                         "Accept":
                             "application/json"
-
                     },
 
                     body:
                         JSON.stringify({
-
                             message: text
-
                         })
-
                 }
             );
 
@@ -1466,6 +1232,7 @@ async function sendMessage() {
 
             const errorText =
                 await response.text();
+
 
             throw new Error(
                 "HTTP " +
@@ -1488,15 +1255,6 @@ async function sendMessage() {
 
         removeTyping();
 
-
-        /*
-         * Accept different backend formats:
-         *
-         * response
-         * answer
-         * result
-         * message
-         */
 
         if (
             data.success === false
@@ -1570,11 +1328,8 @@ async function sendMessage() {
 
 
         messages.push({
-
             role: "assistant",
-
             text: answer
-
         });
 
 
@@ -1585,20 +1340,14 @@ async function sendMessage() {
 
 
         /*
-         * Refresh history.
-         *
-         * If /history is not yet
-         * available, don't break
-         * the chatbot.
+         * Refresh history after
+         * every successful message.
          */
 
         await loadHistory();
 
 
-    }
-
-    catch (error) {
-
+    } catch (error) {
 
         removeTyping();
 
@@ -1614,31 +1363,33 @@ async function sendMessage() {
 
             "⚠️ ZENO could not connect to the backend.\n\n" +
 
-            "Make sure this command is running:\n\n" +
+            "Please check the live Render server.\n\n" +
 
-            "python -m uvicorn backend.api:app --reload\n\n" +
+            "Backend:\n" +
 
-            "Error: " +
+            API_URL +
+
+            "\n\nError: " +
+
             error.message
         );
 
-    }
 
-
-    finally {
+    } finally {
 
         sending = false;
+
 
         sendButton.disabled =
             false;
 
+
         input.disabled =
             false;
 
+
         input.focus();
-
     }
-
 }
 
 
@@ -1651,7 +1402,6 @@ function renderMessage(
     text,
     scroll = true
 ) {
-
 
     const message =
         document.createElement(
@@ -1733,13 +1483,12 @@ function renderMessage(
 
 
     /*
-     * Copy button only for ZENO
+     * Copy button for ZENO.
      */
 
     if (
         role === "assistant"
     ) {
-
 
         const copyButton =
             document.createElement(
@@ -1761,7 +1510,7 @@ function renderMessage(
 
         copyButton.addEventListener(
             "click",
-            async function() {
+            async function () {
 
                 try {
 
@@ -1777,7 +1526,7 @@ function renderMessage(
 
 
                     setTimeout(
-                        function() {
+                        function () {
 
                             copyButton.textContent =
                                 "Copy";
@@ -1786,9 +1535,7 @@ function renderMessage(
                         1500
                     );
 
-                }
-
-                catch (error) {
+                } catch (error) {
 
                     console.error(
                         error
@@ -1796,9 +1543,7 @@ function renderMessage(
 
                     copyButton.textContent =
                         "Copy failed";
-
                 }
-
             }
         );
 
@@ -1806,7 +1551,6 @@ function renderMessage(
         content.appendChild(
             copyButton
         );
-
     }
 
 
@@ -1826,9 +1570,7 @@ function renderMessage(
 
 
     if (scroll) {
-
         scrollToBottom();
-
     }
 
 
@@ -1841,7 +1583,6 @@ function renderMessage(
 ============================================================ */
 
 function showTyping() {
-
 
     removeTyping();
 
@@ -1883,7 +1624,6 @@ function showTyping() {
             </div>
 
         </div>
-
     `;
 
 
@@ -1909,9 +1649,7 @@ function removeTyping() {
 
 
     if (typing) {
-
         typing.remove();
-
     }
 }
 
@@ -1923,7 +1661,7 @@ function removeTyping() {
 function scrollToBottom() {
 
     setTimeout(
-        function() {
+        function () {
 
             chatArea.scrollTop =
                 chatArea.scrollHeight;
@@ -1958,9 +1696,7 @@ function resizeInput() {
 
 async function loadHistory() {
 
-
     try {
-
 
         const response =
             await fetch(
@@ -1969,16 +1705,9 @@ async function loadHistory() {
             );
 
 
-        /*
-         * Backend currently may not
-         * have /history.
-         *
-         * In that case don't show
-         * an application error.
-         */
-
         if (
-            response.status === 404
+            response.status ===
+            404
         ) {
 
             historyList.innerHTML = `
@@ -2030,12 +1759,12 @@ async function loadHistory() {
 
             history =
                 data;
-
         }
 
 
         if (
-            history.length === 0
+            history.length ===
+            0
         ) {
 
             historyList.innerHTML = `
@@ -2051,8 +1780,7 @@ async function loadHistory() {
 
 
         history.forEach(
-            function(chat) {
-
+            function (chat) {
 
                 const item =
                     document.createElement(
@@ -2094,7 +1822,6 @@ async function loadHistory() {
                         chat.response ||
                         chat.answer ||
                         "";
-
                 }
 
 
@@ -2110,8 +1837,7 @@ async function loadHistory() {
 
                 item.addEventListener(
                     "click",
-                    function() {
-
+                    function () {
 
                         newChat();
 
@@ -2123,9 +1849,7 @@ async function loadHistory() {
 
 
                         if (welcome) {
-
                             welcome.remove();
-
                         }
 
 
@@ -2135,7 +1859,6 @@ async function loadHistory() {
                                 "user",
                                 userMessage
                             );
-
                         }
 
 
@@ -2145,7 +1868,6 @@ async function loadHistory() {
                                 "assistant",
                                 botResponse
                             );
-
                         }
 
                     }
@@ -2160,10 +1882,7 @@ async function loadHistory() {
         );
 
 
-    }
-
-    catch (error) {
-
+    } catch (error) {
 
         console.warn(
             "[HISTORY]",
@@ -2178,7 +1897,6 @@ async function loadHistory() {
             </div>
 
         `;
-
     }
 }
 
@@ -2189,7 +1907,6 @@ async function loadHistory() {
 
 async function clearHistory() {
 
-
     const confirmed =
         confirm(
             "Delete all ZENO chat history?"
@@ -2197,36 +1914,41 @@ async function clearHistory() {
 
 
     if (!confirmed) {
-
         return;
     }
 
 
     try {
 
-
         const response =
             await fetch(
                 API_URL +
                 "/history",
                 {
-
-                    method:
-                        "DELETE"
-
+                    method: "DELETE"
                 }
             );
 
 
         if (
-            response.status === 404
+            response.status ===
+            404
         ) {
 
             alert(
-                "The backend /history endpoint is not available yet."
+                "The backend /history endpoint is not available."
             );
 
             return;
+        }
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "HTTP " +
+                response.status
+            );
         }
 
 
@@ -2254,10 +1976,7 @@ async function clearHistory() {
         await loadHistory();
 
 
-    }
-
-    catch (error) {
-
+    } catch (error) {
 
         console.error(
             "[CLEAR HISTORY]",
@@ -2269,7 +1988,6 @@ async function clearHistory() {
             "Unable to clear history:\n" +
             error.message
         );
-
     }
 }
 
@@ -2280,22 +1998,17 @@ async function clearHistory() {
 
 input.addEventListener(
     "keydown",
-    function(event) {
-
+    function (event) {
 
         if (
             event.key === "Enter" &&
             !event.shiftKey
         ) {
 
-
             event.preventDefault();
 
-
             sendMessage();
-
         }
-
     }
 );
 
@@ -2316,12 +2029,11 @@ input.addEventListener(
 
 sendButton.addEventListener(
     "click",
-    function(event) {
+    function (event) {
 
         event.preventDefault();
 
         sendMessage();
-
     }
 );
 
@@ -2332,10 +2044,9 @@ sendButton.addEventListener(
 
 newChatButton.addEventListener(
     "click",
-    function() {
+    function () {
 
         newChat();
-
     }
 );
 
@@ -2346,10 +2057,9 @@ newChatButton.addEventListener(
 
 clearHistoryButton.addEventListener(
     "click",
-    function() {
+    function () {
 
         clearHistory();
-
     }
 );
 
@@ -2378,6 +2088,14 @@ console.log(
 );
 
 console.log(
+    " LIVE BACKEND:"
+);
+
+console.log(
+    API_URL
+);
+
+console.log(
     " Frontend started"
 );
 
@@ -2388,18 +2106,13 @@ console.log(
 
 checkBackend();
 
-
 loadHistory();
 
-
 resizeInput();
-
 
 input.focus();
 
 </script>
 
-
 </body>
-
 </html>
